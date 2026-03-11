@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Jewellery Collection - JEWELLSMART{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ------------------ COLLECTION LAYOUT ------------------ */
+h1 { text-align:center; margin:40px 0; font-size:32px; }
+
+.collection-wrapper{
+display:grid;
+grid-template-columns:220px 1fr;
+gap:40px;
+max-width:1200px;
+margin:0 auto 80px;
+padding:0 20px;
+}
+
+/* ------------------ CATEGORY SIDEBAR ------------------ */
+.category-sidebar{
+background:#fff;
+border:1px solid #eee;
+padding:20px;
+border-radius:12px;
+height:fit-content;
+}
+.category-sidebar h3{
+margin-bottom:15px;
+font-size:20px;
+}
+.category-sidebar a{
+display:block;
+padding:8px 12px;
+margin-bottom:6px;
+text-decoration:none;
+color:#555;
+border-radius:6px;
+}
+.category-sidebar a:hover{
+background:#f7f7f7;
+color:#e91e63;
+}
+.category-sidebar a.active{
+background:#e91e63;
+color:#fff;
+font-weight:600;
+}
+
+/* ------------------ COLLECTION GRID ------------------ */
+.collection-container{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+gap:30px;
+}
+.collection-card{text-align:center;transition:0.3s;}
+.collection-card:hover{transform:translateY(-6px);}
+.collection-card img{
+width:100%;height:280px;object-fit:cover;
+border-radius:18px;border:4px solid #f2f2f2;
+}
+.collection-card h3{margin-top:12px;font-size:20px;}
+.collection-card p{font-size:14px;color:#666;margin-top:5px;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.cat-grid,.product-grid{
+grid-template-columns:1fr 1fr;
+}
+}
+@media(max-width:600px){
+.cat-grid,.product-grid{grid-template-columns:1fr;}
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- COLLECTION SECTION -->
+<h1>Our Jewellery Collections</h1>
+
+<div class="collection-wrapper">
+
+    <!-- LEFT CATEGORY -->
+    <div class="category-sidebar">
+        <h3>Categories</h3>
+
+        <a href="{% url 'collection' %}" class="{% if not selected_category %}active{% endif %}">
+            All
+        </a>
+
+        {% for key, value in categories %}
+        <a href="?category={{ key }}" class="{% if selected_category == key %}active{% endif %}">
+            {{ value }}
+        </a>
+        {% endfor %}
+    </div>
+
+    <!-- RIGHT COLLECTION -->
+    <div class="collection-container">
+        {% for item in collections %}
+
+        <div class="collection-card">
+
+            <a href="{% url 'collectiondetail' item.id %}">
+                <img src="{{ item.image.url }}" alt="{{ item.name }}">
+            </a>
+
+            <h3>{{ item.name }}</h3>
+            <p style="font-weight:600;color:#333;">{{ item.title }}</p>
+            <p>{{ item.description|truncatewords:12 }}</p>
+            <p style="color:#e91e63;font-weight:700;">₹ {{ item.price }}</p>
+
+            <a href="{% url 'collectiondetail' item.id %}" style="display:inline-block;margin-top:10px;
+              background:#e91e63;color:#fff;
+              padding:8px 14px;border-radius:6px;
+              text-decoration:none;">
+                View Details
+            </a>
+
+        </div>
+
+        {% empty %}
+        <p>No collections found</p>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

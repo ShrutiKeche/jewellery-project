@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JewellSmart – Blog{% endblock %}
+
+{% block extra_css %}
+<style>
+/* BLOG HERO */
+.blog-hero{
+height:300px;
+background:url("{% static 'images/blo1.jpeg' %}") center/cover no-repeat;
+display:flex; align-items:center; justify-content:center;
+}
+.blog-hero h1{
+font-size:42px; color:white; background:rgba(0,0,0,0.5);
+padding:12px 30px; border-radius:8px; backdrop-filter:blur(4px);
+}
+
+/* BLOG GRID */
+.blog-section{
+width:85%; margin:50px auto;
+}
+.blog-section h2{text-align:center;margin-bottom:30px;font-size:30px;}
+
+.blog-grid{
+display:flex;
+gap:35px;
+overflow-x:auto;
+overflow-y:hidden;
+padding-bottom:15px;
+scroll-behavior:smooth;
+}
+
+/* horizontal scrollbar styling */
+.blog-grid::-webkit-scrollbar{
+height:4px;
+}
+.blog-grid::-webkit-scrollbar-thumb{
+background:#e91e63;
+border-radius:10px;
+}
+
+/* card width fix for horizontal scroll */
+.blog-card{
+min-width:300px;
+max-width:300px;
+flex-shrink:0;
+}
+
+.blog-card{
+border-radius:10px;
+background:white;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+overflow:hidden;
+transition:.3s ease;
+}
+.blog-card:hover{
+transform:translateY(-5px);
+}
+.blog-card img{
+width:100%; height:350px; object-fit:cover;
+}
+.blog-content{
+padding:20px;
+}
+.blog-content h3{
+font-size:20px; margin-bottom:10px; color:#333;
+}
+.blog-content p{
+font-size:15px; color:#666; margin-bottom:15px;
+}
+.blog-content a{
+text-decoration:none;
+font-weight:600;
+color:#e91e63;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- BLOG HERO -->
+<div class="blog-hero">
+    <h1>a</h1>
+</div>
+
+<!-- BLOG GRID -->
+<section class="blog-section">
+    <h2>Latest Articles</h2>
+
+    <div class="blog-grid">
+
+        <div class="blog-card">
+            <img src="{% static 'images/blog1.jpeg' %}">
+            <div class="blog-content">
+                <h3>Top 10 Jewellery Trends for 2025</h3>
+                <p>Discover the latest designs, colors, and styles that are dominating today's fashion industry.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+        <div class="blog-card">
+            <img src="{% static 'images/blog2.jpeg' %}">
+            <div class="blog-content">
+                <h3>Daily Wear Jewellery Ideas</h3>
+                <p>Minimal and elegant jewellery sets perfect for everyday fashion.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="{% static 'images/blog3.jpeg' %}">
+            <div class="blog-content">
+                <h3>Indian Bridal Jewellery Guide</h3>
+                <p>Your wedding look is incomplete without the right jewellery set—here’s what to pick.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="{% static 'images/blog4.jpeg' %}">
+            <div class="blog-content">
+                <h3>How to Maintain Jewellery</h3>
+                <p>Simple tips to keep your favourite ornaments sparkling like new.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="{% static 'images/blog5.jpeg' %}">
+            <div class="blog-content">
+                <h3>Perfect Gifts for Loved Ones</h3>
+                <p>Choose the perfect jewellery gifts for special moments.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+        <div class="blog-card">
+            <img src="{% static 'images/blog6.jpeg' %}">
+            <div class="blog-content">
+                <h3>How to Choose the Perfect Diamond</h3>
+                <p>Learn the 4Cs of diamonds—Cut, Clarity, Color, and Carat—before buying.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Order Success{% endblock %}
+
+{% block extra_css %}
+<style>
+.container { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); display:
+inline-block; margin: 50px auto; }
+h2 { color: #4CAF50; }
+p { font-size: 16px; margin: 10px 0; }
+.btn { padding: 10px 20px; background: #e91e63; color: #fff; border: none; border-radius: 6px; text-decoration: none;
+font-size: 14px; margin-top: 20px; display: inline-block; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div style="text-align: center;">
+    <div class="container">
+        <h2>Order Placed Successfully ✅</h2>
+        <!-- success.html -->
+        <h1>Order #{{ order.id }} placed successfully!</h1>
+        <p>Payment Status: {{ order.payment_status }}</p>
+        <p>Order Status: {{ order.status }}</p>
+
+        <p><b>Order ID:</b> {{ order.id }}</p>
+        <p><b>Total Paid:</b> ₹ {{ order.total_price }}</p>
+        <p><b>Shipping Address:</b> {{ order.address }}</p>
+
+        <a href="{% url 'payment_receipt' order.id %}" class="btn" style="background:#4CAF50;">View Receipt</a>
+        <a href="{% url 'home' %}" class="btn">← Back to Home</a>
+        <a href="{% url 'Product' %}" class="btn">Continue Shopping</a>
+    </div>
+</div>
+{% endblock %}

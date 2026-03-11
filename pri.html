@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Privacy Policy - JEWELLSMART{% endblock %}
+
+{% block extra_css %}
+<style>
+/* PRIVACY POLICY CONTENT */
+.container{
+max-width:900px;
+background:white;
+margin:40px auto;
+padding:40px;
+border-radius:15px;
+box-shadow:0 4px 20px rgba(233,30,99,0.15);
+border:1px solid #ffd5e6;
+}
+.container h1{ text-align:center; color:#e91e63; margin-bottom:20px; }
+.container h2{ margin-top:25px; color:#e91e63; font-size:22px; }
+.container p, .container li{ font-size:16px; line-height:1.6; color:#444; }
+.container ul{ margin-left:20px; }
+.footer-note{ text-align:center; margin-top:30px; font-size:14px; color:#777; }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- PRIVACY POLICY CONTENT -->
+<div class="container">
+    <h1>Privacy Policy</h1>
+    <p>At <strong>JEWELLSMART</strong>, we care about your privacy. This Privacy Policy explains how we collect, use,
+        and protect your information.</p>
+
+    <h2>1. Information We Collect</h2>
+    <ul>
+        <li>Personal Info: Name, Email, Phone, Address</li>
+        <li>Payment Info: UPI, Cards (secured by payment gateway)</li>
+        <li>Device Info: IP, Browser, Location</li>
+        <li>Order Info: Products viewed, purchased</li>
+    </ul>
+
+    <h2>2. How We Use Your Information</h2>
+    <ul>
+        <li>Process & deliver orders</li>
+        <li>Personalize shopping experience</li>
+        <li>Improve website & product quality</li>
+        <li>Send updates, offers & newsletters</li>
+        <li>Prevent fraud & unauthorized activities</li>
+    </ul>
+
+    <h2>3. Protection</h2>
+    <p>We use SSL, secure servers, and verified payment gateways. Payment info is never stored on our servers.</p>
+
+    <h2>4. Sharing Info</h2>
+    <ul>
+        <li>Delivery partners</li>
+        <li>Payment gateways</li>
+        <li>Analytics providers</li>
+    </ul>
+    <p>We never sell or trade your info.</p>
+
+    <h2>5. Cookies & Tracking</h2>
+    <p>Used to remember cart, analyze trends, and personalize content. Can disable via browser settings.</p>
+
+    <h2>6. Your Rights</h2>
+    <ul>
+        <li>Access personal data</li>
+        <li>Request correction/deletion</li>
+        <li>Unsubscribe from marketing</li>
+    </ul>
+
+    <h2>7. Updates</h2>
+    <p>Policy may update occasionally. Changes posted here with date.</p>
+
+    <h2>8. Contact Us</h2>
+    <p>Email: support@jewellsmart.com</p>
+    <p>Phone: +91 9876543210</p>
+    <p>Address: Mumbai, Maharashtra, India</p>
+
+    <div class="footer-note">© 2025 JEWELLSMART — All Rights Reserved.</div>
+</div>
+{% endblock %}

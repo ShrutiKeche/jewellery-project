@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - JEWELLSMART{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ------------------ ABOUT SECTION ------------------ */
+.about-section { padding:60px 20px; max-width:1200px; margin:auto; }
+.about-banner img {
+width:100%; height:350px; object-fit:cover;
+border-radius:15px; margin-bottom:40px;
+}
+.about-section h1 { text-align:center; font-size:36px; margin-bottom:20px; color:#e91e63; }
+.about-section p { text-align:center; font-size:18px; line-height:1.6; margin-bottom:20px; }
+
+.values {
+display:grid; grid-template-columns:repeat(3,1fr);
+gap:25px; margin-top:40px;
+}
+.value-box { text-align:center; padding:20px; }
+.value-box img { width:80px; height:80px; margin-bottom:10px; }
+.value-box h3 { color:#e91e63; margin-bottom:10px; }
+
+.team {
+display:grid; grid-template-columns:repeat(3,1fr);
+gap:25px; margin-top:40px;
+}
+.team-member img {
+width: 100%;
+aspect-ratio: 1/1;
+object-fit: cover;
+border-radius: 50%;
+}
+.team-member h3 { margin-top:10px; color:#e91e63; }
+
+/* ------------------ RESPONSIVE ------------------ */
+@media(max-width:900px){
+.values, .team { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:600px){
+.values, .team { grid-template-columns:1fr; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- ABOUT SECTION -->
+<section class="about-section">
+    <div class="about-banner">
+        <img src="{% static 'images/a1.jpeg' %}" alt="About JewellSmart Banner">
+    </div>
+
+    <h1>About JEWELLSMART</h1>
+    <p>At JEWELLSMART, we bring elegance, style, and affordability together.</p>
+    <p>Founded with the vision of blending traditional craftsmanship with modern designs.</p>
+
+    <h2 style="text-align:center; margin-top:50px; color:#e91e63;">Our Core Values</h2>
+
+    <div class="values">
+        <div class="value-box">
+            <img src="{% static 'images/a2.jpeg' %}" alt="Quality">
+            <h3>Quality</h3>
+            <p>Premium materials for long-lasting jewelry.</p>
+        </div>
+
+        <div class="value-box">
+            <img src="{% static 'images/a3.jpeg' %}" alt="Affordable">
+            <h3>Affordability</h3>
+            <p>Beautiful designs at pocket-friendly prices.</p>
+        </div>
+
+        <div class="value-box">
+            <img src="{% static 'images/a4.jpeg' %}" alt="Customer Satisfaction">
+            <h3>Customer Satisfaction</h3>
+            <p>Your happiness is our top priority.</p>
+        </div>
+    </div>
+
+    <h2 style="text-align:center; margin-top:50px; color:#e91e63;">Meet Our Team</h2>
+    <div class="team">
+        <div class="team-member">
+            <img src="{% static 'images/a5.jpeg' %}" alt="Founder">
+            <h3>Kalyani Deshmukh</h3>
+            <p>Founder & Chief Designer</p>
+        </div>
+
+        <div class="team-member">
+            <img src="{% static 'images/a8.jpeg' %}" alt="Manager">
+            <h3>Rohit Deshmukh</h3>
+            <p>Operations Manager</p>
+        </div>
+
+        <div class="team-member">
+            <img src="{% static 'images/a7.jpeg' %}" alt="Marketing">
+            <h3>Vaishnavi Redake</h3>
+            <p>Marketing Head</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
