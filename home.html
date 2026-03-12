@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JEWELLSMART - Fashion & Lifestyle{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ================= PREMIUM SLIDER ================= */
+.premium-slider{
+position:relative;height:85vh;margin:25px;border-radius:20px;overflow:hidden;
+}
+.slider{height:100%;position:relative;}
+.slide{
+position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease-in-out;
+}
+.slide.active{opacity:1;}
+.slide img{
+width:100%;height:100%;object-fit:cover;filter:brightness(0.65);
+}
+.slide-content{
+position:absolute;top:50%;left:8%;transform:translateY(-50%);
+color:#fff;max-width:520px;
+}
+.slide-content h1{font-size:52px;margin-bottom:12px;}
+.slide-content p{font-size:18px;margin-bottom:25px;}
+.btn{
+padding:14px 34px;background:linear-gradient(135deg,#d4af37,#f5e28c);
+color:#000;font-weight:700;border-radius:30px;text-decoration:none;
+}
+.btn:hover{background:#fff;}
+
+.intro-section{
+max-width:1200px;
+margin:70px auto;
+background:#fff;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+padding:40px;
+border-radius:18px;
+box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.intro-section img{
+width:100%;
+height: 360px;
+border-radius:16px;
+object-fit:cover;
+}
+
+.intro-content h2{
+font-size:42px;
+color:#444;
+margin-bottom:20px;
+}
+
+.intro-content p{
+font-size:17px;
+color:#666;
+line-height:1.7;
+margin-bottom:15px;
+}
+
+.intro-content button{
+margin-top:20px;
+padding:14px 30px;
+background:#e91e63;
+color:#fff;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.intro-content button:hover{
+background:#e4196a;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.intro-section{
+grid-template-columns:1fr;
+text-align:center;
+}
+}
+.intro-video {
+width: 100%;
+height: 500px;
+border-radius: 16px;
+object-fit: cover;
+box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+.intro-video {
+height: 500px;
+}
+}
+
+/* CATEGORIES */
+.categories{padding:60px 40px;}
+.categories h2{text-align:center;margin-bottom:30px;font-size:32px;font-weight:700;}
+.cat-grid{
+display:grid;grid-template-columns:repeat(4,1fr);gap:25px;
+}
+.cat-box{transition:0.3s;}
+.cat-box img{
+width:100%;height:230px;border-radius:12px;object-fit:cover;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);transition:0.3s;
+}
+.cat-box:hover img{transform:scale(1.05);}
+.cat-box p{
+text-align:center;margin-top:12px;font-size:19px;font-weight:600;
+}
+
+/* PRODUCTS */
+.products{padding:60px 40px;}
+.products h2{text-align:center;margin-bottom:35px;font-size:32px;}
+.product-grid{
+display:grid;grid-template-columns:repeat(4,1fr);gap:25px;
+}
+.product-card{
+padding:15px;border:1px solid #eee;border-radius:12px;text-align:center;transition:0.3s;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+.product-card:hover{
+transform:translateY(-6px);box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+.product-card img{
+width:100%;height:380px;border-radius:12px;object-fit:cover;
+}
+.product-card button{
+margin-top:12px;padding:10px 24px;border:none;background:#e91e63;color:#fff;
+border-radius:25px;font-weight:600;cursor:pointer;transition:0.3s;
+}
+.product-card button:hover{background:#c2185b;}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- PREMIUM SLIDER -->
+<section class="premium-slider">
+    <div class="slider">
+        <div class="slide active">
+            <img src="{% static 'images/slider1.jpeg' %}">
+            <div class="slide-content">
+                <h1>Elegant Handmade Jewelry</h1>
+                <p>Designed for timeless beauty</p>
+                <a href="{% url 'Product' %}" class="btn">Shop Now</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/slider2.jpeg' %}">
+            <div class="slide-content">
+                <h1>Luxury You Can Feel</h1>
+                <p>Premium designs for every occasion</p>
+                <a href="{% url 'Product' %}" class="btn">Explore</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/slider3.jpeg' %}">
+            <div class="slide-content">
+                <h1>Perfect Gift Collection</h1>
+                <p>Make every moment special</p>
+                <a href="{% url 'collection' %}" class="btn">View Collection</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INTRO SECTION -->
+<section class="intro-section">
+    <div>
+        <div>
+            <video src="{% static 'video/1.mp4' %}" autoplay muted loop playsinline
+                style="width:100%; height:700px; border-radius:16px; object-fit:cover;">
+            </video>
+        </div>
+
+    </div>
+    <div class="intro-content">
+        <h2>Welcome to JewellesMart Jewellery</h2>
+        <p>
+            If you’re ready to step into a new era of luxury, Everbrite Jewellery is exactly where you need to be.
+            Combining intricate design sensibilities with cutting-edge technology, we create meaningful pieces of
+            lab-grown diamond jewellery, each with a story of its own.
+        </p>
+        <p>
+            Our skilled craftsmen design eco-conscious jewellery that houses exceptional, glittering centre stones
+            representing YOU. From everyday classics to festive jewels and flawless engagement rings,
+            Everbrite shines bright with youthful spirit.
+        </p>
+        <button onclick="location.href='/about'">READ MORE</button>
+    </div>
+</section>
+
+
+<!-- CATEGORIES -->
+<section class="categories">
+    <h2>Our Collection</h2>
+    <div class="cat-grid">
+        <div class="cat-box"><img src="{% static 'images/ear1.jpeg' %}">
+            <p>Earring</p>
+        </div>
+        <div class="cat-box"><img src="{% static 'images/neck1.jpeg' %}">
+            <p>Necklace</p>
+        </div>
+        <div class="cat-box"><img src="{% static 'images/rin.jpeg' %}">
+            <p>Ring</p>
+        </div>
+        <div class="cat-box"><img src="{% static 'images/brooch.jpeg' %}">
+            <p>Brooches</p>
+        </div>
+        <div class="cat-box"><img src="{% static 'images/bracelet.jpeg' %}">
+            <p>Bracelets</p>
+        </div>
+        <div class="cat-box"><img src="{% static 'images/anklet.jpeg' %}">
+            <p>Anklets</p>
+        </div>
+        <div class="cat-box"><img src="{% static 'images/hairacc.jpeg' %}">
+            <p>Hair Accessories</p>
+        </div>
+        <div class="cat-box"><img src="{% static 'images/bangles.jpeg' %}">
+            <p>Accessories</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- TRENDING PRODUCTS -->
+<section class="products">
+    <h2>Trending Products</h2>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="{% static 'images/t1.jpeg' %}">
+            <h3>Diamond Set</h3>
+            
+
+        </div>
+       
+
+        <div class="product-card">
+            <img src="{% static 'images/t2.jpeg' %}">
+            <h3>Diamond Gold plated jumka</h3>
+            
+            
+        </div>
+
+        <div class="product-card">
+            <img src="{% static 'images/t33.jpeg' %}">
+            <h3>Diamond Ear cuff </h3>
+            
+        </div>
+
+        <div class="product-card">
+            <img src="{% static 'images/t4.jpeg' %}">
+            <h3>Moti bangles</h3>
+            
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const slides = document.querySelectorAll('.premium-slider .slide');
+    let current = 0;
+
+    setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+    }, 4500);
+</script>
+{% endblock %}
