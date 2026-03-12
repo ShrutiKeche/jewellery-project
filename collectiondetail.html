@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} - JEWELLSMART{% endblock %}
+
+{% block extra_css %}
+<style>
+.container{
+max-width:1000px;
+margin:60px auto;
+background:#fff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+display:flex;
+gap:40px;
+}
+.img-wrapper img{width:380px;height:380px;object-fit:cover;border-radius:12px;}
+.img-actions{margin-top:15px;display:flex;gap:10px;}
+.btn{padding:12px 20px;background:#e91e63;color:#fff;border-radius:6px;font-size:14px;cursor:pointer;border:none;}
+.buy{background:#e113c9;}
+.details h2{margin-bottom:10px;}
+.price{font-size:24px;color:#e91e63;}
+.old-price{text-decoration:line-through;color:#999;margin-left:10px;font-size:16px;}
+.offer{color:green;font-size:14px;margin-left:10px;font-weight:600;}
+.qty{margin-top:15px;}
+.qty input{width:60px;padding:6px;margin-left:10px;}
+.reviews{margin-top:40px;border-top:1px solid #eee;padding-top:20px;}
+.review-box{background:#f8f8f8;padding:10px;border-radius:8px;margin-top:10px;}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <!-- LEFT IMAGE + FORM -->
+    <div class="img-wrapper">
+        <img src="{{ collection.image.url }}" alt="{{ collection.title }}" style="width:380px;border-radius:12px;">
+
+        <!-- ADD TO CART + BUY NOW FORM -->
+        <form method="POST" action="{% url 'collection_add_to_cart' collection.id %}">
+            {% csrf_token %}
+
+            <div class="qty" style="margin-top:10px;">
+                <label><b>Quantity:</b></label>
+                <input type="number" name="quantity" id="qtyInput" value="1" min="1">
+            </div>
+
+            <div class="img-actions" style="margin-top:15px;">
+                <button type="submit" class="btn"
+                    style="background:#e91e63;color:#fff;padding:10px 20px;border:none;border-radius:6px;">
+                    🛒 Add to Cart
+                </button>
+
+                <button type="submit" formaction="{% url 'collection_buy_now' collection.id %}" class="btn buy"
+                    style="background:#ff9800;color:#fff;padding:10px 20px;border:none;border-radius:6px;">
+                    ⚡ Buy Now
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- RIGHT DETAILS -->
+    <div class="details" style="margin-left:30px;">
+        <h2>{{ collection.title }}</h2>
+
+        <p style="font-size:24px;color:#e91e63;">
+            ₹ {{ collection.price }}
+        </p>
+
+        <p>{{ collection.description }}</p>
+
+        <p style="margin-top:10px;color:green;font-weight:600;">✔ In Stock</p>
+
+        <a href="/collection" class="btn"
+            style="background:#555;margin-top:15px;display:inline-block;text-decoration:none;">
+            ← Back to Collections
+        </a>
+    </div>
+
+</div>
+{% endblock %}
